@@ -14,6 +14,7 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public Member save(Member member) {
         member.setId(++sequence);  //아이디 자동 입력, 시스템이 정해준다.
+//        System.out.println(sequence);
         store.put(member.getId(), member);  //아이디, 멤버저장
         return null;
     }
