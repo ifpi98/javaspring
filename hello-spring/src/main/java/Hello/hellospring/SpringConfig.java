@@ -15,7 +15,7 @@ public class SpringConfig {
     }
 
     @Bean
-    public MemberRepository memberRepository() {
+    public MemberRepository memberRepository(){
         return new MemoryMemberRepository();
     }
 
