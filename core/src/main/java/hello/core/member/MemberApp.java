@@ -1,20 +1,24 @@
 package hello.core.member;
 
 import hello.core.AppConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
-
-        Member member = new Member(1L, "memberA", Grade.BASIC);
-
+        Member member = new Member(1L, "memberA", Grade.VIP);
+        //회원가입
         memberService.join(member);
 
-        Member findMember = memberService.findMember(1L);
+        //회원가입이 되었는지 확인한다.
+        Member findmember = memberService.findMember(1L);
 
-        System.out.println("new member: " + member.getName());
-        System.out.println("findmember: " + findMember.getName());
+        System.out.println("new member : " + member.getName());
+        System.out.println("findmember : " + findmember.getName());
     }
 }

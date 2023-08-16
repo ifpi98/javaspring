@@ -1,18 +1,16 @@
 package hello.core.member;
 
 public class MemberServiceImpl implements MemberService{
-
+    //설계변경으로 MemberServiceImpl 은 MemoryMemberRepository를 의존하지않는다!
+    //단지 MemberRepository 인터페이스만의존한다.
     private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
-    // 설계 변경을 통해 MemoryMemberRepository를 의존하지 않는다.
-    // MemberServiceImpl 입장에서 생성자를 통해 어떤 구현객체가 들어올지 알 수 없음.
-    // AppConfig가 어떤 값을 넣어주느냐에 달려 있음. (외부에서 결정)
-    // 의존 관계에 더이상 신경쓸 것 없이 자신의 기능에만 집중할 수 있음.
-    // 생성자 주입, 제어의 역전
-
+    //MemberServiceImpl 입장에서 생성자를 통해 어떤 구현객체가 들어올지(주입될지)는알 수없다.
+    //MemberServiceImpl의 생성자를 통해서 어떤 구현 객체를 주입할지는 오직외부( AppConfig )에서결정 된다. => 생성자 주입
+    //MemberServiceImpl 은 이제부터 의존관계에 대한고민은 외부에 맡기고 실행에만 집중하면 된다.
     @Override
     public void join(Member member) {
         memberRepository.save(member);
