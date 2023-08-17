@@ -17,16 +17,19 @@ public class AppConfig {
     //appConfig 객체는 memoryMemberRepository 객체를 생성하고 그참조값을 memberServiceImpl을 생성하면서 생성자로 전달한다.
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberService");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolocy());
     }
 

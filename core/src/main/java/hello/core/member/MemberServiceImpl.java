@@ -1,10 +1,19 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
     //설계변경으로 MemberServiceImpl 은 MemoryMemberRepository를 의존하지않는다!
     //단지 MemberRepository 인터페이스만의존한다.
     private final MemberRepository memberRepository;
 
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
