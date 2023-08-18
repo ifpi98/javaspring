@@ -3,12 +3,14 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 //주문이 들어오면
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     //오더서비스는 멤버 리포지터리에 가서 회원을 찾아야 한다.
@@ -19,12 +21,6 @@ public class OrderServiceImpl implements OrderService{
 
     public MemberRepository getMemberRepository() {
         return memberRepository;
-    }
-
-//    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
     }
 
     @Override
