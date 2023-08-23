@@ -1,10 +1,10 @@
-package Hello.hellospring;
+package hello.hellospring;
 
-import Hello.hellospring.repository.JdbcMemberRepository;
-import Hello.hellospring.repository.JdbcTemplateMemberRepository;
-import Hello.hellospring.repository.MemberRepository;
-import Hello.hellospring.repository.MemoryMemberRepository;
-import Hello.hellospring.service.MemberService;
+import hello.hellospring.repository.JdbcMemberRepository;
+import hello.hellospring.repository.JdbcTemplateMemberRepository;
+import hello.hellospring.repository.MemberRepository;
+import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,15 +20,15 @@ public class SpringConfig {
     }
 
     @Bean
-    public MemberService memberService(){
+    public MemberService memberService() {
         return new MemberService(memberRepository());
     }
 
     @Bean
-    public MemberRepository memberRepository(){
-        return new JdbcTemplateMemberRepository(dataSource);
-//        return new JdbcMemberRepository(dataSource);
-//        return new MemoryMemberRepository();
-    }
+    public MemberRepository memberRepository() {
 
+//        return new MemoryMemberRepository();
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
+    }
 }

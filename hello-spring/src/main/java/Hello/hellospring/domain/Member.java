@@ -1,9 +1,9 @@
-package Hello.hellospring.domain;
-//회원객체
+package hello.hellospring.domain;
+
 public class Member {
 
     private Long id;
-    private  String name;
+    private String name;
 
     public Long getId() {
         return id;
