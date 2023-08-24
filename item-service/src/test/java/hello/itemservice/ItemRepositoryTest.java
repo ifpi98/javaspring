@@ -50,7 +50,7 @@ public class ItemRepositoryTest {
     }
 
     @Test
-    void update() {
+    void updateItem() {
         Item item1 = new Item("itemA", 10000, 10);
         Item savedItem = itemRepository.save(item1);
         Long itemID = savedItem.getId();
@@ -63,6 +63,8 @@ public class ItemRepositoryTest {
         Assertions.assertThat(item2.getItemName()).isEqualTo(findItem.getItemName());
         Assertions.assertThat(item2.getPrice()).isEqualTo(findItem.getPrice());
         Assertions.assertThat(item2.getQuantity()).isEqualTo(findItem.getQuantity());
+
+
 
     }
 
