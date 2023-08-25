@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>기본 객체들</title>
+</head>
+<body>
+
+    <h4> 기본 객체</h4>
+    <ul>
+        <li>request = <span th:text="${#request}"></span></li>
+        <li>response = <span th:text="${#response}"></span></li>
+        <li>session = <span th:text="${#session}"></span></li>
+        <li>servletContext = <span th:text="${#servletContext}"></span></li>
+        <li>locale = <span th:text="${#locale}"></span></li>
+    </ul>
+    <h4> 편의 객체</h4>
+    <ul>
+        <li> HTTP 요청 파라미터 접근: param = <span th:text="${param.paramData}"></span></li>
+        <li> HTTP 세션 접근: session = <span th:text="${session.sessionData}"></span></li>
+        <li> 스프링 빈 접근: @ = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+    </ul>
+
+</body>
+</html>
+
+<!--타임리프는 기본 객체들을 제공한다. (3.0부터는 제공안함)-->
+<!--${#request}, ${#response}, ${#session}, ${#servletContext}, ${#locale}-->
+
+<!--HTTP 요청 파라미터 접근: param-->
+<!--예) ${param.paramData}-->
+<!--HTTP 세션 접근: session-->
+<!--예) ${session.sessionData}-->
+<!--스프링 빈 접근: @-->
+<!--예) ${@helloBean.hello('Spring!')}-->

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>text-unescaped</title>
+</head>
+<body>
+
+<h1> 컨텐츠에 데이터 출력하기</h1>
+<ul>
+    <li>th:text<span th:text="${data}"></span> </li>
+    <li>th:utext<span th:utext="${data}"></span> </li>
+    <li>컨텐츠 안에서 직접 출력하기 = [[${data}]]</li>
+    <li>컨텐츠 안에서 직접 출력하기 = [(${data})]</li>
+</ul>
+
+</body>
+</html>
+
+<!--이스케이프 기능을 사용하지 않으려면 어떻게 해야할까?-->
+<!--th:text -> th:utext-->
+<!--[[...]] -> [(...)]-->
