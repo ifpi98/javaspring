@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>block</title>
+</head>
+<body>
+    <p> &lt;th:block&gt; 은 HTML 태그가 아닌 타임리프의 유일한 자체 태그다. 렌더링시 제거된다.</p>
+    <h4> block </h4>
+
+    <th:block th:each="user : ${users}">
+        <div>
+            사용자 이름1 <span th:text="${user.username}"></span><br>
+            사용자 나이1 <span th:text="${user.age}"></span>
+        </div>
+        <div>
+            요약 <span th:text="${user.username} + ' / ' + ${user.age}"></span>
+        </div>
+
+    </th:block>
+
+</body>
+</html>

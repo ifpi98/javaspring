@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> condition </h1>
+    <h4> if, unless</h4>
+    <p> 타임리프는 해당 조건이 맞지 않으면 태그 자체를 렌더링하지 않는다. 만약 다음 조건이 false인 경우 &lt;span&gt;...&lt;/span&gt; 부분이 렌더링되지 않고 사라진다.</p>
+    <table border="1">
+        <tr>
+            <th> count</th>
+            <th> username</th>
+            <th> age</th>
+        </tr>
+        <tr th:each="user, userStat : ${users}">
+            <th th:text="${userStat.count}">count</th>
+            <td th:text="${user.username}">username</td>
+            <td>
+                <span th:text="${user.age}">age</span>
+                <span th:text="'미성년자'" th:if="${user.age lt 20}"> if문으로 확인 th:if="${조건} </span>
+                <span th:text="'미성년자'" th:unless="${user.age ge 20}"> unless문으로 확인 th:if="${조건} </span>
+            </td>
+<!--            // 답이 틀릴 경우에는 값이 표시되지 않는다. span태그가 생성되지 않음-->
+        </tr>
+    </table>
+
+    <table border="1">
+        <tr>
+            <th> count</th>
+            <th> username</th>
+            <th> age</th>
+        </tr>
+        <tr th:each="user, userStat : ${users}">
+            <th th:text="${userStat.count}">count</th>
+            <td th:text="${user.username}">username</td>
+            <td th:switch="${user.age}">
+                <span th:case="10">10살</span>
+                <span th:case="20">20살</span>
+                <span th:case="*">기타</span>
+            </td>
+            <!--            // 답이 틀릴 경우에는 값이 표시되지 않는다. span태그가 생성되지 않음-->
+        </tr>
+    </table>
+</body>
+</html>
