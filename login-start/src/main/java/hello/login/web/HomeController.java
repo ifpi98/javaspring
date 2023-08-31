@@ -14,13 +14,4 @@ public class HomeController {
         return "/home";
     }
 
-    @GetMapping("/members/add")
-    public String addMember(Model model) {
-        return "/members/addMemberForm";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "/login";
-    }
 }

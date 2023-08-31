@@ -1,26 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
-    <title>회원 등록</title>
+    <style>
+        .container {
+            max-width: 560px;
+        }
+
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+    </style>
 </head>
 <body>
 
-
 <div class="container">
-    <h4> 회원 정보 입력 </h4>
 
-    <div class="row">
-        <div class="col">
-            <button type="button" class="w-100 btn btn-secondary btn-lg" onclick="location.href='/members/add'"> 회원 가입</button>
-        </div>
-        <div class="col">
-            <button type="button" class="w-100 btn btn-dark btn-lg" onclick="location.href='/login'"> 로그인</button>
-        </div>
+    <div class="py-5 text-center">
+        <h2>회원 가입</h2>
     </div>
-</div>
+    <h4 class="mb-3">회원 정보 입력</h4>
 
+    <form action="" th:action th:object="${member}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalError()}" th:text="${err}">전체 오류 메시지</p>
+        </div>
+
+        <div>
+            <label for="loginId" th:text="#{label.member.loginId}">로그인 ID</label>
+            <input type="text" id="loginId" th:field="*{loginId}" class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{loginId}" />
+        </div>
+
+        <div>
+            <label for="password" th:text="#{label.member.password}">비밀번호</label>
+            <input type="text" id="password" th:field="*{password}" class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{password}" />
+        </div>
+        <div>
+            <label for="name" th:text="#{label.member.name}">이름</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{name}" />
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit" th:text="#{button.save}">회원 가입</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg"
+                        onclick="location.href='home.html'"
+                        th:onclick="|location.href='@{/}'|"
+                        type="button" th:text="#{button.cancel}">취소</button>
+            </div>
+        </div>
+
+    </form>
+
+</div> <!-- /container -->
 </body>
 </html>
