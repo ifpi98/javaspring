@@ -13,7 +13,7 @@ public class Member {
     @NotBlank
     private String loginId;
 
-//    @NotBlank
+    @NotBlank
     private String name;
 
     @NotBlank

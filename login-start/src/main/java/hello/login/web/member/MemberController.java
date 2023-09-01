@@ -50,27 +50,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String login(@ModelAttribute("member") Member member) {
-        return "/login";
-    }
 
-    @PostMapping("/login")
-    public String login(@Valid @ModelAttribute Member member, BindingResult bindingResult){
-
-        final LoginService loginService = new LoginService(memberRepository);
-
-        if(bindingResult.hasErrors()){
-            log.info("errors = {}", bindingResult);
-            return "/login";
-        }
-
-        if(!loginService.loginCheck(member.getLoginId(), member.getPassword())){
-            log.info("errors = {}", bindingResult);
-            return "/login";
-        }
-        return "redirect:/";
-    }
 
 
 }
