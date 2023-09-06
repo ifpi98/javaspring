@@ -27,5 +27,4 @@ public class MyBatisConfig {
     public ItemRepository itemRepository() {
         return new MyBatisItemRepository(itemMapper);
     }
-
 }

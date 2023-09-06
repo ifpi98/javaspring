@@ -29,11 +29,11 @@ public class MyBatisItemRepository implements ItemRepository {
 
     @Override
     public Optional<Item> findById(Long id) {
-        return Optional.empty();
+        return  itemMapper.findById(id);
     }
 
     @Override
     public List<Item> findAll(ItemSearchCond cond) {
-        return null;
+        return itemMapper.findAll(cond);
     }
 }
