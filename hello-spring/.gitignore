@@ -38,3 +38,5 @@ out/
 
 ### properties ###
 src/main/resources/application-aws.properties
+src/main/resources/application.properties
+
